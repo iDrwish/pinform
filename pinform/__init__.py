@@ -9,7 +9,8 @@ import re
 from .utils import dromedary_to_underline, underline_to_dromedary
 
 
-name = "pinform"
+__name__ = "pinform"
+__version__ = '0.9.2'
 
 
 class MeasurementNameComponent(object):
