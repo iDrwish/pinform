@@ -186,7 +186,7 @@ class InfluxClient:
                     time_range: Union[datetime.date, Tuple[datetime.datetime, datetime.datetime]] = None,
                     limit: Optional[int] = None, tz: pytz.UTC = pytz.utc) -> List[T]:
         # noinspection SqlNoDataSourceInspection
-        query_string = "SELECT * FROM {measurement_name}".format(measurement_name=Measurement.get_name(measurement_type, name_components=name_components))
+        query_string = """SELECT * FROM "{measurement_name}" """.format(measurement_name=Measurement.get_name(measurement_type, name_components=name_components))
 
         and_conditions_list = []
         if tags is not None:
@@ -322,7 +322,7 @@ class InfluxClient:
                     aggregated_field_names.append(aggregation_mode.get_result_field_name(field_name))
 
         query_string += ', '.join(properties)
-        query_string += " FROM {measurement_name}".format(measurement_name=measurement_name)
+        query_string += """ FROM "{measurement_name}" """.format(measurement_name=measurement_name)
 
         and_conditions_list = []
         if tags is not None:
