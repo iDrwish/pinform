@@ -256,7 +256,7 @@ class Measurement(six.with_metaclass(MeasurementMeta)):
             if name_components is None:
                 raise Exception('Measurement name resolution needs a component named ' + name_tag + ' but null name components is provided')
             if name_tag in name_components.keys():
-                measurement_name.replace('(' + name_tag + ')', name_components[name_tag])
+                measurement_name = measurement_name.replace('(' + name_tag + ')', name_components[name_tag])
             else:
                 raise Exception('Tag with name ' + name_tag + ' not provided in name resolution tags for resolving dynamic measurement name')
         return measurement_name
